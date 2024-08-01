@@ -58,17 +58,7 @@ module.exports = {
   ],
   resolve: {
     extensions: [
-      '*',
-      '.js',
-      '.jsx',
-      '.ts',
-      '.tsx',
-      '.json',
-      '.css',
-      '.scss',
-      '.png',
-      '.svg',
-      '.jpg'
+      ".*",".js",".jsx",".ts",".tsx",".json",".css",".scss",".png",".svg",".jpg"
     ],
     alias: {
       '@pages': path.resolve(__dirname, './src/pages'),
