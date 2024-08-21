@@ -2,11 +2,7 @@ import { ProfileUI } from '@ui-pages';
 import { Preloader } from '@ui';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from '../../services/store';
-import {
-  selectLoading,
-  selectUser,
-  updateUser
-} from '../../slices/userSlice';
+import { selectLoading, selectUser, updateUser } from '../../slices/userSlice';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
@@ -14,7 +10,7 @@ export const Profile: FC = () => {
   const loading = useSelector(selectLoading);
 
   const [formValue, setFormValue] = useState({
-    name: user!.name, 
+    name: user!.name,
     email: user!.email,
     password: ''
   });

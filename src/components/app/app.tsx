@@ -19,9 +19,7 @@ import { useDispatch } from '../../services/store';
 import { ProtectedRoute } from '../protected-route/protected-route';
 
 import { fetchUser } from '../../slices/userSlice';
-import {
-  fetchIngredients
-} from '../../slices/ingredientsSlice';
+import { fetchIngredients } from '../../slices/ingredientsSlice';
 
 const App = () => {
   const dispatch = useDispatch();

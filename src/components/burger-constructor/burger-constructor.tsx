@@ -1,7 +1,14 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { selectElements, selectIsLoading, selectOrderModalData, resetOrderModal, openOrderModal, fetchNewOrder } from '../../slices/burgerSlice';
+import {
+  selectElements,
+  selectIsLoading,
+  selectOrderModalData,
+  resetOrderModal,
+  openOrderModal,
+  fetchNewOrder
+} from '../../slices/burgerSlice';
 import { selectUser } from '../../slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '../../services/store';
@@ -14,7 +21,6 @@ export const BurgerConstructor: FC = () => {
   const elements = useSelector(selectElements);
   const user = useSelector(selectUser);
   const orderModalData = useSelector(selectOrderModalData);
-
 
   const constructorItems = useMemo(() => {
     const bun = elements.find((item) => item.type === 'bun');
@@ -35,12 +41,12 @@ export const BurgerConstructor: FC = () => {
       constructorItems.bun.id,
       ...constructorItems.ingredients.map((item) => item._id)
     ];
-    
+
     dispatch(fetchNewOrder(ingredients))
       .unwrap()
       .then((response) => {
         const newOrder = response.order;
-        dispatch(openOrderModal(newOrder)); // 
+        dispatch(openOrderModal(newOrder)); //
       })
       .catch((err) => {
         console.log('Ошибка при оформлении заказа', err);
@@ -48,7 +54,7 @@ export const BurgerConstructor: FC = () => {
   };
 
   const closeOrderModal = () => {
-    dispatch(resetOrderModal()); 
+    dispatch(resetOrderModal());
   };
 
   const price = useMemo(

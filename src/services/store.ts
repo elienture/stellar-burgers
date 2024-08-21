@@ -11,7 +11,7 @@ import {
   useSelector as selectorHook
 } from 'react-redux';
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   burger: burgerReducer,
   user: userReducer,
   ingredients: ingredientsReducer,
@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   feed: feedReducer
 });
 
-const store = configureStore({
+export const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'
 });

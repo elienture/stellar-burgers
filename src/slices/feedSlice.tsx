@@ -1,4 +1,4 @@
-import { getFeedsApi, TFeedsResponse } from '@api';
+import { getFeedsApi, TFeedsResponse } from '../utils/burger-api';
 import {
   createAsyncThunk,
   createSlice,
@@ -13,7 +13,7 @@ type TFeedState = {
   error: null | SerializedError;
 };
 
-const initialState: TFeedState = {
+export const initialState: TFeedState = {
   feed: { orders: [], total: null, totalToday: null },
   isLoading: false,
   error: null
