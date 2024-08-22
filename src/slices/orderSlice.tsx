@@ -1,4 +1,4 @@
-import { getOrdersApi } from '@api';
+import { getOrdersApi } from '../utils/burger-api';
 import {
   createAsyncThunk,
   createSlice,
@@ -11,9 +11,9 @@ type TOrdersState = {
   orders: TOrder[];
   isLoading: boolean;
   error: null | SerializedError;
-}
+};
 
-const initialState: TOrdersState = {
+export const initialState: TOrdersState = {
   orders: [],
   isLoading: false,
   error: null

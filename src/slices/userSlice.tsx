@@ -8,7 +8,7 @@ import {
   updateUserApi,
   TUserResponse,
   logoutApi
-} from '@api';
+} from '../utils/burger-api';
 import {
   createAsyncThunk,
   createSlice,
@@ -21,16 +21,16 @@ import { deleteCookie, setCookie } from '../utils/cookie';
 type TUserState = {
   userData: TUser | null;
   isLoading: boolean;
-  error: string | null
+  error: string | null;
 };
 
-const initialState: TUserState = {
+export const initialState: TUserState = {
   userData: null,
   isLoading: false,
   error: null
 };
 
-// получаем данные о пользователе 
+// получаем данные о пользователе
 export const fetchUser = createAsyncThunk<{ user: TUser }>(
   'user/fetchUser',
   async () => {
@@ -58,13 +58,13 @@ export const registerUser = createAsyncThunk<TAuthResponse, TRegisterData>(
 );
 
 // изменение данных пользователя
-export const updateUser = createAsyncThunk<TUserResponse, Partial<TRegisterData>>(
-  'user/updateUser',
-  async (userData) => {
-    const response = await updateUserApi(userData);
-    return response;
-  }
-);
+export const updateUser = createAsyncThunk<
+  TUserResponse,
+  Partial<TRegisterData>
+>('user/updateUser', async (userData) => {
+  const response = await updateUserApi(userData);
+  return response;
+});
 
 // выход из личного кабинета
 export const logoutUser = createAsyncThunk<{ success: boolean }>(

@@ -15,14 +15,12 @@ export const Login: FC = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     try {
-        await dispatch(loginUser({ email, password })).unwrap();
-        navigate(location.state?.from || '/', { replace: true });
+      await dispatch(loginUser({ email, password })).unwrap();
+      navigate(location.state?.from || '/', { replace: true });
     } catch (error) {
-        setErrorMessage('Неверный логин или пароль.');
+      setErrorMessage('Неверный логин или пароль.');
     }
   };
-
-
 
   return (
     <LoginUI

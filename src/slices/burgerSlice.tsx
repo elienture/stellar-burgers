@@ -15,7 +15,7 @@ type TBurgerState = {
   orderModalData: TOrder | null;
 };
 
-const initialState: TBurgerState = {
+export const initialState: TBurgerState = {
   elements: [],
   isLoading: false,
   error: null,
@@ -37,11 +37,11 @@ export const burgerSliсe = createSlice({
   reducers: {
     resetOrderModal: (state) => {
       // Очищаем данные заказа при закрытии модального окна
-      state.orderModalData = null; 
+      state.orderModalData = null;
     },
     openOrderModal: (state, action: PayloadAction<TOrder>) => {
       state.orderModalData = action.payload;
-  },
+    },
     // добавление нового ингредиента
     addIngredient: (state, action: PayloadAction<TConstructorIngredient>) => {
       const ingredient = action.payload;
@@ -98,12 +98,17 @@ export const burgerSliсe = createSlice({
   }
 });
 
-
 export const selectElements = (state: RootState) => state.burger.elements;
 export const selectIsLoading = (state: RootState) => state.burger.isLoading;
-export const selectOrderModalData = (state: RootState) => state.burger.orderModalData;
+export const selectOrderModalData = (state: RootState) =>
+  state.burger.orderModalData;
 
-export const { addIngredient, removeIngredient, moveIngredient, resetOrderModal, openOrderModal } =
-  burgerSliсe.actions;
+export const {
+  addIngredient,
+  removeIngredient,
+  moveIngredient,
+  resetOrderModal,
+  openOrderModal
+} = burgerSliсe.actions;
 
 export default burgerSliсe.reducer;
